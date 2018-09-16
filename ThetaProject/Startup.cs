@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using ThetaProject.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ThetaProject.Models;
 
 namespace ThetaProject
 {
@@ -37,6 +38,12 @@ namespace ThetaProject
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ProjectDBContext>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("MyCs")));
+
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
