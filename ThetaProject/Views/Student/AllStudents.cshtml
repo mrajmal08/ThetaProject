@@ -10,40 +10,25 @@
     <thead>
         <tr>
             <td>ID:</td>
-        </tr>
-        <tr>
             <td>Name:</td>
-        </tr>
-        <tr>
             <td>Department:</td>
-        </tr>
-        <tr>
             <td>Email:</td>
-        </tr>
-        <tr>
             <td>Adress:</td>
         </tr>
         
     </thead>
-    @foreach (Student s in Model)
-    {
+   
     <tbody>
-        <tr>
-            <td>@s.Id</td>
-        </tr>
-        <tr>
-            <td>@s.Name</td>
-        </tr>
-        <tr>
-            <td>@s.Dept</td>
-        </tr>
-        <tr>
-            <td>@s.Email</td>
-        </tr>
-        <tr>
-            <td>@s.Address</td>
-        </tr>
-        
-    </tbody>
-    }
+        @foreach (Student s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>          
+                <td>@s.Name</td>          
+                <td>@s.Dept</td>           
+                <td>@s.Email</td>           
+                <td>@s.Address</td>
+            </tr>
+        }
+        </tbody>
+    
 </table>
