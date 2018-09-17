@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Student>
+
+<a href="/Student/AddStudent" class="btn btn-primary"><span class="glyphicon glyphicon-modal-window"></span>Add New Student</a>
+
+<h1 class="alert alert-warning"> All Students</h1>
+<p style="color:crimson">Total Students: @Model.Count()</p>
+
+<table class="table table-bordered table-striped table-responsive">
+
+    <thead>
+        <tr>
+            <td>ID:</td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+        </tr>
+        <tr>
+            <td>Department:</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+        </tr>
+        <tr>
+            <td>Adress:</td>
+        </tr>
+        
+    </thead>
+    @foreach (Student s in Model)
+    {
+    <tbody>
+        <tr>
+            <td>@s.Id</td>
+        </tr>
+        <tr>
+            <td>@s.Name</td>
+        </tr>
+        <tr>
+            <td>@s.Dept</td>
+        </tr>
+        <tr>
+            <td>@s.Email</td>
+        </tr>
+        <tr>
+            <td>@s.Address</td>
+        </tr>
+        
+    </tbody>
+    }
+</table>

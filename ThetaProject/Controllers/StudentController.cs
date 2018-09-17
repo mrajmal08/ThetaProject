@@ -31,6 +31,11 @@ namespace ThetaProject.Controllers
             ViewBag.Message = "New student has added to list";
             return View();
         }
+        public IActionResult AllStudents()
+        {
+            IList<Student> SS = ORM.Student.ToList<Student>();
+            return View(SS);
+        }
     }
 
 }
