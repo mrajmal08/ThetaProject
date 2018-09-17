@@ -1,0 +1,48 @@
+﻿@model Student
+
+<h1 class="alert alert-warning">Enter the details of student bellow</h1>
+@if(ViewBag.Message != null && ViewBag.Message != "")
+{
+   <h1 class="alert alert-success"><span class="glyphicon glyphicon-ok-circle "></span>@ViewBag.Message</h1>
+}
+   <form action="/Student/AddStudent" method="post" >
+       <div class="alert alert-success">
+           <div class="col-md-2">
+               <label for="Name">Name:</label>
+           </div>
+           <div class="col-md-10">
+               <input type="text" id="Name" name="Name" placeholder="Name" /><br /><br />
+               <span id="NameErroe"></span>
+           </div>
+
+           <div class="col-md-2">
+               <label for="Dept">Department:</label>
+           </div>
+           <div class="col-md-10">
+               <input type="text" id="Dept" name="Dept" placeholder="Dept" /><br /><br />
+               <span id="DeptErroe"></span>
+           </div>
+
+           <div class="col-md-2">
+               <label for="Email">Email:</label>
+           </div>
+           <div class="col-md-10">
+               <input type="Email" id="Email" name="Email" placeholder="Email" /><br /><br />
+               <span id="EmailErroe"></span>
+           </div>
+
+           <div class="col-md-2">
+               <label for="Address">Address:</label>
+           </div>
+           <div class="col-md-10">
+               <input type="text" id="Address" name="Address" placeholder="Address" /><br /><br />
+               <span id="AddressErroe"></span>
+           </div>
+
+           <div class="col-md-6">
+               <div>       <br />        
+                   <input type="submit" class="col-md-6" value="Add Detail" />
+               </div>
+           </div>
+       </div><br />
+   </form>
