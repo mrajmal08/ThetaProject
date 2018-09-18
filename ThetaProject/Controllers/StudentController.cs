@@ -42,6 +42,13 @@ namespace ThetaProject.Controllers
 
             return View(S);
         }
+        public IActionResult DeleteStudent(Student S)
+        {
+            ORM.Student.Remove(S);
+            ORM.SaveChanges();
+            
+            return RedirectToAction("AllStudents");
+        }
     }
 
 }
