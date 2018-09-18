@@ -1,0 +1,48 @@
+﻿@model Student
+
+<h1 class="alert alert-info">Please update the student details:</h1>
+<form method="post" action="/Student/EditStudent" class="alert alert-success">
+    <p>ID: @Model.Id</p>
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="col-md-2">
+        <label for="Name">Name:</label>
+    </div>
+    <div class="col-md-10">
+        <input id="Name" name="Name" value="@Model.Name" placeholder="Name" /><br />
+        <span id="NameErroe"></span>
+
+    </div>
+
+    <div class="col-md-2">
+        <label for="Department">Department:</label>
+    </div>
+    <div class="col-md-10">
+        <input id="Dept" name="Dept" value="@Model.Dept" placeholder="Dept" /><br />
+    </div>
+
+
+    <div class="col-md-2">
+        <label for="Email">Email:</label>
+    </div>
+    <div class="col-md-10">
+        <input id="Email" name="Email" value="@Model.Email" placeholder="Email" /><br />
+    </div>
+
+
+    <div class="col-md-2">
+        <label for="Address">Address:</label>
+    </div>
+    <div class="col-md-10">
+        <input id="Address" name="Address" value="@Model.Address" placeholder="Address" /><br />
+    </div>
+
+    <div class="col-md-6">
+        <div>
+            <br />
+            <input type="submit" class="col-md-6" value="Save Changes" />
+        </div>
+    </div>
+
+
+</form>
