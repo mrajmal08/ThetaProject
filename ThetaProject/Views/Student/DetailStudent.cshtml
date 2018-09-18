@@ -1,0 +1,14 @@
+﻿@model Student
+
+<h1 class="alert alert-success">Detail of @Model.Name </h1>
+<div class="alert alert-success ">
+    <div class="alert alert-info">
+        <h1> <span class="glyphicon glyphicon-lock"></span><b>ID:</b>   @Model.Id</h1>
+        <p><span class="glyphicon glyphicon-user"></span><b>Name:</b>   @Model.Name</p>
+        <p><span class="glyphicon glyphicon-user"></span><b>Department:</b>   @Model.Dept</p>
+        <p><span class="glyphicon glyphicon-bookmark"></span><b>Email:</b>   @Model.Email</p>
+        <p><span class="glyphicon glyphicon-book"></span><b>Address:</b>   @Model.Address</p>
+    </div>
+
+</div>
+<a href="/Student/AllStudents"><span class="glyphicon glyphicon--arrow-left"></span></a>

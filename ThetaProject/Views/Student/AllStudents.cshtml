@@ -14,6 +14,8 @@
             <td>Department:</td>
             <td>Email:</td>
             <td>Adress:</td>
+            <td>Actions:</td>
+
         </tr>
         
     </thead>
@@ -21,13 +23,16 @@
     <tbody>
         @foreach (Student s in Model)
         {
-            <tr>
-                <td>@s.Id</td>          
-                <td>@s.Name</td>          
-                <td>@s.Dept</td>           
-                <td>@s.Email</td>           
-                <td>@s.Address</td>
-            </tr>
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Dept</td>
+            <td>@s.Email</td>
+            <td>@s.Address</td>
+            <td>
+                <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
+            </td>
+        </tr>
         }
         </tbody>
     

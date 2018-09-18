@@ -36,6 +36,12 @@ namespace ThetaProject.Controllers
             IList<Student> SS = ORM.Student.ToList<Student>();
             return View(SS);
         }
+        public IActionResult DetailStudent(int Id)
+        {
+            Student S = ORM.Student.Where(m => m.Id == Id).FirstOrDefault<Student>();
+
+            return View(S);
+        }
     }
 
 }

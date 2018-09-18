@@ -4,7 +4,7 @@
     <h1 class="alert alert-warning">Enter the details of student bellow</h1>
     @if (ViewBag.Message != null && ViewBag.Message != "")
     {
-        <h1 class="alert alert-success"><span class="glyphicon glyphicon-ok-circle "></span>@ViewBag.Message</h1>
+        <p class="alert alert-success"><span class="glyphicon glyphicon-ok-circle "></span>@ViewBag.Message</p>
     }
     <form action="/Student/AddStudent" method="post">
         <div class="alert alert-success">
@@ -47,4 +47,4 @@
                 </div>
             </div>
         </div><br />
-    </form>
+    </form><br /><br />
