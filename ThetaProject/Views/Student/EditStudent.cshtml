@@ -1,15 +1,15 @@
 ﻿@model Student
 
 <h1 class="alert alert-info">Please update the student details:</h1>
-<form method="post" action="/Student/EditStudent" class="alert alert-success">
-    <p>ID: @Model.Id</p>
+<form method="post" action="/Student/EditStudent" style="color:brown">
+    <h1>ID: @Model.Id</h1>
     @Html.HiddenFor(m => m.Id)
 
     <div class="col-md-2">
         <label for="Name">Name:</label>
     </div>
     <div class="col-md-10">
-        <input id="Name" name="Name" value="@Model.Name" placeholder="Name" /><br />
+        <input id="Name" name="Name" value="@Model.Name" placeholder="Name" /><br /><br />
         <span id="NameErroe"></span>
 
     </div>
@@ -18,7 +18,7 @@
         <label for="Department">Department:</label>
     </div>
     <div class="col-md-10">
-        <input id="Dept" name="Dept" value="@Model.Dept" placeholder="Dept" /><br />
+        <input id="Dept" name="Dept" value="@Model.Dept" placeholder="Dept" /><br /><br />
     </div>
 
 
@@ -26,7 +26,7 @@
         <label for="Email">Email:</label>
     </div>
     <div class="col-md-10">
-        <input id="Email" name="Email" value="@Model.Email" placeholder="Email" /><br />
+        <input id="Email" name="Email" value="@Model.Email" placeholder="Email" /><br /><br />
     </div>
 
 
@@ -34,7 +34,7 @@
         <label for="Address">Address:</label>
     </div>
     <div class="col-md-10">
-        <input id="Address" name="Address" value="@Model.Address" placeholder="Address" /><br />
+        <input id="Address" name="Address" value="@Model.Address" placeholder="Address" /><br /><br />
     </div>
 
     <div class="col-md-6">

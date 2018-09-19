@@ -3,7 +3,15 @@
 <a href="/Student/AddStudent" class="btn btn-primary"><span class="glyphicon glyphicon-modal-window"></span>Add New Student</a>
 
 <h1 class="alert alert-warning"> All Students:</h1>
-<p style="color:crimson">Total Students: @Model.Count()</p>
+<p style="color:crimson">Total Students: @Model.Count()</p><br />
+
+
+<form action="/Student/AllStudents" method="post">
+    <input type="text" id="SearchByName" name="SearchByName" placeholder="SearchByName"/>
+     <input type="text" id="SearchByDept" name="SearchByDept" placeholder="SearchByDepartment"/>
+     <input type="text" id="SearchByAddress" name="SearchByAddress" placeholder="SearchByAddress"/>
+    <input type="submit" value="Search" />
+</form>
 
 <table class="table table-bordered table-striped table-responsive">
 
@@ -13,32 +21,32 @@
             <td>Name:</td>
             <td>Department:</td>
             <td>Email:</td>
-            <td>Adress:</td>
+            <td>Address:</td>
             <td>CV Download</td>
             <td>Actions:</td>
 
         </tr>
-        
+
     </thead>
-   
+
     <tbody>
         @foreach (Student s in Model)
         {
-        <tr>
-            <td>@s.Id</td>
-            <td>@s.Name</td>
-            <td>@s.Dept</td>
-            <td>@s.Email</td>
-            <td>@s.Address</td>
-            <td> <a href="/Student/DownloadCV?Id=@s.Cv" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-down"></span> Download CV</a></td>
-            <td>
-                <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
-                <a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
-                <a href="/Student/EditStudent?Id=@s.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Dept</td>
+                <td>@s.Email</td>
+                <td>@s.Address</td>
+                <td> <a href="/Student/DownloadCV?Id=@s.Cv" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-down"></span> Download CV</a></td>
+                <td>
+                    <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
+                    <a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                    <a href="/Student/EditStudent?Id=@s.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
-        </tbody>
-    
+    </tbody>
+
 </table>
