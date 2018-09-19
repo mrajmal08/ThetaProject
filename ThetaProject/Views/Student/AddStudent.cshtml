@@ -6,8 +6,9 @@
     {
         <p class="alert alert-success"><span class="glyphicon glyphicon-ok-circle "></span>@ViewBag.Message</p>
     }
-    <form action="/Student/AddStudent" method="post">
-        <div class="alert alert-success">
+    <form action="/Student/AddStudent" method="post" enctype="multipart/form-data">
+            <div class="alert alert-success">
+
             <div class="col-md-2">
                 <label for="Name">Name:</label>
             </div>
@@ -40,6 +41,14 @@
                 <span id="AddressErroe"></span>
             </div>
 
+            <div class="col-md-2">
+                <label for="Cv">Upload CV:</label>
+            </div>
+            <div class="col-md-10">
+                <input type="file" id="Cv" name="Cv" /><br /><br />
+                <span id="FileErroe"></span>
+            </div>
+
             <div class="col-md-6">
                 <div>
                     <br />
@@ -47,4 +56,5 @@
                 </div>
             </div>
         </div><br />
+
     </form><br /><br />

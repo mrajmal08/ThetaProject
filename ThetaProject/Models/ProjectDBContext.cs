@@ -37,7 +37,7 @@ namespace ThetaProject.Models
 
                 entity.Property(e => e.Cv)
                     .HasColumnName("CV")
-                    .HasMaxLength(50);
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.Dept).HasMaxLength(50);
 

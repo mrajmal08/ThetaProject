@@ -2,7 +2,7 @@
 
 <h1 class="alert alert-success">Detail of @Model.Name </h1>
 <div class="alert alert-success ">
-    <div class="alert alert-info">
+    <div >
         <h1> <span class="glyphicon glyphicon-lock"></span><b>ID:</b>   @Model.Id</h1>
         <p><span class="glyphicon glyphicon-user"></span><b>Name:</b>   @Model.Name</p>
         <p><span class="glyphicon glyphicon-user"></span><b>Department:</b>   @Model.Dept</p>
@@ -11,4 +11,8 @@
     </div>
 
 </div>
-<a href="/Student/AllStudents" class="btn btn-primary"><span class="glyphicon glyphicon--arrow-left"></span>Go Back to Student List</a>
+<div>
+    <a href="/Student/AllStudents" class="btn btn-primary"><span class="glyphicon glyphicon--arrow-left"></span>Go Back to Student List</a>
+    <a href="/Student/DeleteStudent?Id=@Model.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+    <a href="/Student/EditStudent?Id=@Model.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+</div>
