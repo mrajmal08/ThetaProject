@@ -47,10 +47,10 @@ namespace ThetaProject.Controllers
             ORM.SaveChanges();
 
             MailMessage Obj = new MailMessage();
-            Obj.From = new MailAddress("meharsalman073@gamil.com");
+            Obj.From = new MailAddress("meharsalman073@gmail.com");
             Obj.To.Add(new MailAddress(S.Email));
             Obj.Subject = "Welcome to theta Solution:";
-            Obj.Body = "Dear" + S.Name + "<br ><br >" +
+            Obj.Body = "Dear"+" " + S.Name + "<br ><br >" +
             "Thanks for registration with Theta Solution";
             Obj.IsBodyHtml = true;
             if (!string.IsNullOrEmpty(S.Cv))
@@ -59,7 +59,7 @@ namespace ThetaProject.Controllers
             }
 
             SmtpClient SMTP = new SmtpClient();
-            SMTP.Host = "meharsalman073@gamil.com";
+            SMTP.Host = "smtp.gmail.com";
             SMTP.Port = 587;
             SMTP.EnableSsl = true;
             SMTP.Credentials = new System.Net.NetworkCredential("meharsalman073@gmail.com", "salman123");
