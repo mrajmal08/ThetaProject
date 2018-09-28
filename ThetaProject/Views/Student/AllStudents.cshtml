@@ -7,11 +7,11 @@
 
 
 <form action="/Student/AllStudents" method="post">
-    <input type="text" id="SearchByName" name="SearchByName" placeholder="SearchByName"/>
-     <input type="submit" value="Search" />
-     <input type="text" id="SearchByDept" name="SearchByDept" placeholder="SearchByDepartment"/>
-     <input type="submit" value="Search" />
-     <input type="text" id="SearchByAddress" name="SearchByAddress" placeholder="SearchByAddress"/>
+    <input type="text" id="SearchByName" name="SearchByName" placeholder="SearchByName" />
+    <input type="submit" value="Search" />
+    <input type="text" id="SearchByDept" name="SearchByDept" placeholder="SearchByDepartment" />
+    <input type="submit" value="Search" />
+    <input type="text" id="SearchByAddress" name="SearchByAddress" placeholder="SearchByAddress" />
     <input type="submit" value="Search" />
 </form>
 
@@ -43,7 +43,8 @@
                 <td> <a href="/Student/DownloadCV?Id=@s.Cv" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-down"></span> Download CV</a></td>
                 <td>
                     <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
-                    <a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                    @*<a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>*@
+                    <a href="#" data-studentid="@s.Id" class="btn btn-danger DeleteStudent "><span class="glyphicon glyphicon-remove"></span> Delete</a>
                     <a href="/Student/EditStudent?Id=@s.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
 
                 </td>
@@ -52,3 +53,33 @@
     </tbody>
 
 </table>
+
+@section Scripts{
+    <script>
+            $(function () {
+            $('.DeleteStudent').click(function () {
+                var clickedbutton = $(this);
+                var studentid = $(this).data("studentid");
+                $(this).text("Please wait");
+                $.ajax({
+                    url: "/student/deletestudentajax",
+                    type: "POST",
+                    data: {
+                        Id: studentid,
+                        Email: "ajmalg08@gmail.com.com"
+                    },
+                    complete: function (myresult) {
+
+                        if (myresult.responseText == "Yes") {
+                            clickedbutton.parent().parent().addClass("danger");
+                            clickedbutton.parent().parent().fadeOut(3000);
+                        } else {
+                            alert("Please try again");
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+}

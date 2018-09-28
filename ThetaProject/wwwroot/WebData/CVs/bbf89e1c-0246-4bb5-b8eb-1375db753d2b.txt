@@ -1,0 +1,31 @@
+Scaffold-DbContext "Server=LAPTOP-82GAEQ6T\SQLEXPRESS;Database=ajmal;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Server=LAPTOP-82GAEQ6T\SQLEXPRESS;Database=ajmal;Trusted_Connection=True;User ID=sa;Password=ajmal" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+
+
+Data Table Extensions:
+            <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+            <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        
+
+ @section abc
+        {
+        <script>
+
+            $(document).ready(function () {
+                $('#ourtable').DataTable();
+            });
+
+           
+
+        </script>
+    }
+
+github
+mrajmal08
+Dani_1515
+
+
+

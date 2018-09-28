@@ -46,12 +46,14 @@ namespace ThetaProject.Controllers
             ORM.Student.Add(S);
             ORM.SaveChanges();
 
+            //Email...
             MailMessage Obj = new MailMessage();
             Obj.From = new MailAddress("meharsalman073@gmail.com");
             Obj.To.Add(new MailAddress(S.Email));
             Obj.Subject = "Welcome to theta Solution:";
-            Obj.Body = "Dear"+" " + S.Name + "<br ><br >" +
-            "Thanks for registration with Theta Solution";
+            Obj.Body = "Dear"+""+"Mr "+" " + S.Name + "<br ><br >" +
+            "Thanku for registration with Theta Solution"+"<br><br>"+
+            "Reguards Mr Ajmal...";
             Obj.IsBodyHtml = true;
             if (!string.IsNullOrEmpty(S.Cv))
             {
@@ -96,12 +98,32 @@ namespace ThetaProject.Controllers
 
             return View(S);
         }
+
+        //Delete Operation
         public IActionResult DeleteStudent(Student S)
         {
             ORM.Student.Remove(S);
             ORM.SaveChanges();
-            
             return RedirectToAction("AllStudents");
+        }
+        public String deletestudentajax(Student S)
+        {
+            String result = "";
+            try
+            {
+                ORM.Student.Remove(S);
+                ORM.SaveChanges();
+                result = "Yes";
+
+            }
+            catch(Exception ex)
+            {
+                result = "No";
+            }
+
+           
+            
+            return result;
         }
         [HttpGet]
         public IActionResult EditStudent(int Id)
