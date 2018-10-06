@@ -14,7 +14,6 @@
     <input type="text" id="SearchByAddress" name="SearchByAddress" placeholder="SearchByAddress" />
     <input type="submit" value="Search" />
 </form>
-
 <table class="table table-bordered table-striped table-responsive">
 
     <thead>
@@ -24,6 +23,7 @@
             <td>Department:</td>
             <td>Email:</td>
             <td>Address:</td>
+            <td>Contact:</td>
             <td>CV Download</td>
             <td>Actions:</td>
 
@@ -40,8 +40,9 @@
                 <td>@s.Dept</td>
                 <td>@s.Email</td>
                 <td>@s.Address</td>
+                <td>@s.Contact</td>
                 <td> <a href="/Student/DownloadCV?Id=@s.Cv" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-down"></span> Download CV</a></td>
-                <td>
+              0  <td>
                     <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
                     @*<a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>*@
                     <a href="#" data-studentid="@s.Id" class="btn btn-danger DeleteStudent "><span class="glyphicon glyphicon-remove"></span> Delete</a>
@@ -80,6 +81,7 @@
                 });
             });
         });
+        
 
     </script>
 }

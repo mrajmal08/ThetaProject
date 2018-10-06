@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -42,9 +43,17 @@ namespace ThetaProject.Controllers
             Cv.CopyTo(FS);
             FS.Close();
 
+            
+
             S.Cv = "/WebData/CVs/" + CVName + CVExtension;
-            ORM.Student.Add(S);
-            ORM.SaveChanges();
+         
+                ORM.Student.Add(S);
+                ORM.SaveChanges();
+
+            String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923338311685&password=2915&sender=BrandName&mobile="+S.Contact+"@message=WelCome to Our team";
+            var APIClient = new HttpClient();
+            var RM = APIClient.GetAsync(ApiUrl);
+            var FR = RM.Result.Content.ReadAsStringAsync();
 
             //Email...
             MailMessage Obj = new MailMessage();
@@ -99,6 +108,7 @@ namespace ThetaProject.Controllers
             return View(S);
         }
 
+
         //Delete Operation
         public IActionResult DeleteStudent(Student S)
         {
@@ -106,6 +116,15 @@ namespace ThetaProject.Controllers
             ORM.SaveChanges();
             return RedirectToAction("AllStudents");
         }
+
+        public IActionResult DelStudent(Student S)
+        {
+            ORM.Student.Remove(S);
+            ORM.SaveChanges();
+            return RedirectToAction("AllStudents");
+        }
+
+
         public String deletestudentajax(Student S)
         {
             String result = "";
@@ -125,6 +144,8 @@ namespace ThetaProject.Controllers
             
             return result;
         }
+
+        //Edit Student
         [HttpGet]
         public IActionResult EditStudent(int Id)
         {
@@ -141,6 +162,8 @@ namespace ThetaProject.Controllers
             return RedirectToAction("AllStudents");
         }
         
+
+
         public FileResult DownloadCV(String Id)
         {
             if (String.IsNullOrEmpty(Id))
@@ -155,7 +178,32 @@ namespace ThetaProject.Controllers
 
             return File(Id , M.Lookup(Id), Name);
         }
+
        
+
+        public String ShowAdd()
+        { String Add = "";
+
+            Add = "< img class='img img-responsive' src = '~/images/Screenshot (5)Ajmal.png' />";
+
+            return Add;
+        }
+        public String AllStudentsList()
+        {
+            String result = "";
+            IList<Student> Model = ORM.Student.ToList<Student>();
+            result += "<h1 class='alert alert-success' > Total Students: "+Model.Count+"</h1>";
+
+            foreach(Student S in Model)
+            {
+               result += "<a href='/Student/DetailStudent?id=" +S.Id+ "'><p><span class='glyphicon glyphicon-user'></span> " +S.Name+ "</p></a> <a href='/Student/DelStudent?id'"+S.Id+" Delete </a> ";
+
+            }
+
+
+            return result;
+
+        }
         
         
     }

@@ -44,6 +44,8 @@ namespace ThetaProject.Models
                 entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
+
+                entity.Property(e => e.Contact).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Teacher>(entity =>
