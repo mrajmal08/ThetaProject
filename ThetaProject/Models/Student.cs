@@ -12,5 +12,8 @@ namespace ThetaProject.Models
         public string Address { get; set; }
         public String Contact { get; set; }
         public string Cv { get; set; }
+        public DateTime? DOB { get; set; }
+
+
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ThetaProject.Models;
 
+
 namespace ThetaProject.Controllers
 {
 
@@ -42,11 +43,10 @@ namespace ThetaProject.Controllers
             FileStream FS = new FileStream(CVPath + CVName + CVExtension, FileMode.Create);
             Cv.CopyTo(FS);
             FS.Close();
-
-            
-
             S.Cv = "/WebData/CVs/" + CVName + CVExtension;
-         
+
+            //
+           
                 ORM.Student.Add(S);
                 ORM.SaveChanges();
 
@@ -54,6 +54,8 @@ namespace ThetaProject.Controllers
             var APIClient = new HttpClient();
             var RM = APIClient.GetAsync(ApiUrl);
             var FR = RM.Result.Content.ReadAsStringAsync();
+
+
 
             //Email...
             MailMessage Obj = new MailMessage();
@@ -69,6 +71,11 @@ namespace ThetaProject.Controllers
                 Obj.Attachments.Add(new Attachment(ENV.WebRootPath + S.Cv));
             }
 
+            //
+            
+
+            //
+
             SmtpClient SMTP = new SmtpClient();
             SMTP.Host = "smtp.gmail.com";
             SMTP.Port = 587;
@@ -79,7 +86,7 @@ namespace ThetaProject.Controllers
             {
                 SMTP.Send(Obj);
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 ViewBag.Message = "Mail has sent successfully";
             }
@@ -135,7 +142,7 @@ namespace ThetaProject.Controllers
                 result = "Yes";
 
             }
-            catch(Exception ex)
+            catch(Exception )
             {
                 result = "No";
             }
@@ -182,9 +189,10 @@ namespace ThetaProject.Controllers
        
 
         public String ShowAdd()
-        { String Add = "";
+        {
+            String Add = "";
 
-            Add = "< img class='img img-responsive' src = '~/images/Screenshot (5)Ajmal.png' />";
+            Add = "< img class='img img-responsive' src = 'http://lorempixel.com/400/200/sports/' />";
 
             return Add;
         }

@@ -60,7 +60,8 @@ namespace ThetaProject
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
+                //app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -74,7 +75,7 @@ namespace ThetaProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Student}/{action=AllStudents}/{id?}");
             });
         }
     }

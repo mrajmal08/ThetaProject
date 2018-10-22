@@ -1,5 +1,5 @@
 ﻿@model Student
-    <a href="/Student/AllStudents" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>All Student List</a>
+    @*<a href="/Student/AllStudents" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span>All Student List</a>*@
 
     <h1 class="alert alert-warning">Enter the details of student bellow:</h1>
     @if (ViewBag.Message != null && ViewBag.Message != "")
@@ -11,7 +11,7 @@
 
             <div class="col-md-6" style="color:brown">
                 <div class="col-md-2">
-                    <label for="Name">Name:</label>
+                    <span class="label label-default">Name:</span>
                 </div>
                 <div class="col-md-10">
                     <input type="text" id="Name" name="Name" placeholder="Name" /><br /><br />
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="Dept">Department:</label>
+                    <span class="label label-default">Department</span>
                 </div>
                 <div class="col-md-10">
                     <input type="text" id="Dept" name="Dept" placeholder="Dept" /><br /><br />
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="Email">Email:</label>
+                    <span class="label label-default">Email:</span>
                 </div>
                 <div class="col-md-10">
                     <input type="Email" id="Email" name="Email" placeholder="Email" /><br /><br />
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="Address">Address:</label>
+                    <span class="label label-default">Address</span>
                 </div>
                 <div class="col-md-10">
                     <input type="text" id="Address" name="Address" placeholder="Address" /><br /><br />
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="Contact">Contact:</label>
+                    <span class="label label-default">Contact:</span>
                 </div>
                 <div class="col-md-10">
                     <input type="number" id="Contact" name="Contact" placeholder="Contact" /><br /><br />
@@ -51,12 +51,21 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="Cv">Upload CV:</label>
+                    <span class="label label-default">Date Of Birth:</span>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" id="datepicker" name="DOB" placeholder="Date of birth">
+                </div><br />
+
+                <div class="col-md-2">
+                    <span class="label label-default">Upload CV:</span>
                 </div>
                 <div class="col-md-10">
                     <input type="file" id="Cv" name="Cv" /><br /><br />
                     <span id="FileErroe"></span>
                 </div>
+
+
 
                 <div class="col-md-6">
                     <div>
@@ -64,6 +73,7 @@
                         <input type="submit" class="col-md-6" value="Add Detail" />
                     </div>
                 </div>
+
             </div>
             @*<div class="col-md-6">
                 <img src="~/images/blank-profile-picture-973461_960_720.png" />
@@ -74,3 +84,13 @@
             <br />
 
         </form><br /><hr />
+
+@section Scripts{ 
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+    </script>
+}
