@@ -20,7 +20,7 @@ namespace ThetaProject.Controllers
         private ProjectDBContext ORM = null;
         private IHostingEnvironment ENV = null;
 
-        public StudentController(ProjectDBContext ORM , IHostingEnvironment ENV)
+        public StudentController(ProjectDBContext ORM , IHostingEnvironment ENV )
         {
             this.ORM = ORM;
             this.ENV = ENV;
@@ -45,8 +45,7 @@ namespace ThetaProject.Controllers
             FS.Close();
             S.Cv = "/WebData/CVs/" + CVName + CVExtension;
 
-            //
-           
+                S.IsCreatedBy = HttpContext.Session.GetInt32("LIUID").Value;
                 ORM.Student.Add(S);
                 ORM.SaveChanges();
 
@@ -104,6 +103,10 @@ namespace ThetaProject.Controllers
         [HttpPost]
         public IActionResult AllStudents(String SearchByName , String SearchByDept , String SearchByAddress)
         {
+            if (HttpContext.Session.GetInt32("LIUID") == null){
+
+                return RedirectToAction("Login");
+            }
 
             IList<Student> SS = ORM.Student.Where(m => m.Name.Contains(SearchByName) || m.Dept.Contains(SearchByDept) || m.Address.Contains(SearchByAddress)).ToList<Student>();
             return View(SS);
@@ -176,7 +179,7 @@ namespace ThetaProject.Controllers
             if (String.IsNullOrEmpty(Id))
             {
                 ViewBag.Message = "There is nothing in this link";
-                return null;
+                return null; // sir ko ly jao
             }
             var M = new MimeSharp.Mime();
             String Extension = Path.GetExtension(Id);
@@ -192,7 +195,8 @@ namespace ThetaProject.Controllers
         {
             String Add = "";
 
-            Add = "< img class='img img-responsive' src = 'http://lorempixel.com/400/200/sports/' />";
+
+            Add = "<img class='img img-responsive' src = 'http://lorempixel.com/400/200/sports/1/'/>";
 
             return Add;
         }
@@ -212,8 +216,57 @@ namespace ThetaProject.Controllers
             return result;
 
         }
-        
-        
+        [HttpGet]
+        public IActionResult Login()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(LoginUser U)
+        {
+            LoginUser LU = ORM.LoginUser.Where(m => m.Email == U.Email && m.Password == U.Password).FirstOrDefault<LoginUser>();
+            if (LU == null)
+            {
+                ViewBag.Message = "Invalid User Name or Password";
+                return View();
+            }
+            HttpContext.Session.SetInt32("LIUID", LU.Id);
+            return RedirectToAction("AllStudents");
+
+        }
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignUp(LoginUser U)
+        {
+            try
+            {
+                ORM.LoginUser.Add(U);
+                ORM.SaveChanges();
+                ViewBag.Message = "Registration Done";
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Sorry; please enter the right details";
+            }
+
+            return View();
+        }
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction ("Login");
+        }
+
+
+
     }
 
 }

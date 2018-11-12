@@ -44,6 +44,13 @@
         <input id="Contact" name="Contact" value="@Model.Contact" placeholder="Contact" /><br /><br />
     </div>
 
+    <div class="col-md-2">
+        <span class="label label-default">Date Of Birth:</span>
+    </div>
+    <div class="col-md-10">
+        <input type="text" id="datepicker" name="DOB" placeholder="Date of birth">
+    </div><br />
+
 
     <div class="col-md-6">
         <div>
@@ -54,3 +61,14 @@
 
 
 </form>
+
+
+@section Scripts{
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+    </script>
+}

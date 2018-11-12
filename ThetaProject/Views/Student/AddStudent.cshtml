@@ -6,91 +6,73 @@
     {
         <p class="alert alert-success"><span class="glyphicon glyphicon-ok-circle "></span>@ViewBag.Message</p>
     }
-        <form action="/Student/AddStudent" method="post" enctype="multipart/form-data">
+          
+            <div class="row alert alert-info">
+                <div class="col-md-4">
+                    <form asp-action="/Student/AddStudent" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
-            <div class="col-md-6" style="color:brown">
-                <div class="col-md-2">
-                    <span class="label label-default">Name:</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="text" id="Name" name="Name" placeholder="Name" /><br /><br />
-                    <span id="NameErroe"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <span class="label label-default">Department</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="text" id="Dept" name="Dept" placeholder="Dept" /><br /><br />
-                    <span id="DeptErroe"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <span class="label label-default">Email:</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="Email" id="Email" name="Email" placeholder="Email" /><br /><br />
-                    <span id="EmailErroe"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <span class="label label-default">Address</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="text" id="Address" name="Address" placeholder="Address" /><br /><br />
-                    <span id="AddressErroe"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <span class="label label-default">Contact:</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="number" id="Contact" name="Contact" placeholder="Contact" /><br /><br />
-                    <span id="ContactErroe"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <span class="label label-default">Date Of Birth:</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="text" id="datepicker" name="DOB" placeholder="Date of birth">
-                </div><br />
-
-                <div class="col-md-2">
-                    <span class="label label-default">Upload CV:</span>
-                </div>
-                <div class="col-md-10">
-                    <input type="file" id="Cv" name="Cv" /><br /><br />
-                    <span id="FileErroe"></span>
-                </div>
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Department:</label>
+                            <input asp-for="Dept" class="form-control" />
+                            <span asp-validation-for="Dept" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Address:</label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact:</label>
+                            <input asp-for="Contact" class="form-control" />
+                            <span asp-validation-for="Contact" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Date Of Birth:</label>
+                            <input asp-for="DOB" class="form-control" />
+                            <span asp-validation-for="DOB" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload CV:</label>
+                            <input asp-for="Cv" class="form-control" type="file" />
+                            <span asp-validation-for="Cv" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add Detail" class="btn btn-danger" />
+                        </div>
+                        </form>
 
 
 
-                <div class="col-md-6">
-                    <div>
+
+</div>
+</div>
+                        @*<div class="col-md-6">
+                        <img src="~/images/blank-profile-picture-973461_960_720.png" />
+                        <input type="file" accept=".jpg , .png" id="picture" />
+                    </div>*@
+
+
                         <br />
-                        <input type="submit" class="col-md-6" value="Add Detail" />
-                    </div>
-                </div>
 
-            </div>
-            @*<div class="col-md-6">
-                <img src="~/images/blank-profile-picture-973461_960_720.png" />
-                <input type="file" accept=".jpg , .png" id="picture" />
-            </div>*@
+              <hr />
 
+                    @section Scripts{
 
-            <br />
+                        <script>
+                            $(function () {
+                                $("#datepicker").datepicker();
+                            });
 
-        </form><br /><hr />
-
-@section Scripts{ 
-
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-
-    </script>
-}
+                        </script>
+                    }
