@@ -50,9 +50,10 @@ namespace ThetaProject.Models
 
                 entity.Property(e => e.DOB).HasMaxLength(50);
 
-                entity.Property(e => e.IsCreatedBy)
-                .HasColumnName("Is_Created_By")
-                .HasMaxLength(50);
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+
+
             });
 
             modelBuilder.Entity<Teacher>(entity =>

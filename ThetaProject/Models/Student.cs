@@ -13,7 +13,7 @@ namespace ThetaProject.Models
         public String Contact { get; set; }
         public string Cv { get; set; }
         public DateTime? DOB { get; set; }
-        public int IsCreatedBy { get; set; }
+        public String CreatedBy { get; set; }
 
 
 

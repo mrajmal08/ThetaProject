@@ -78,7 +78,7 @@ namespace ThetaProject
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Student}/{action=AllStudents}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

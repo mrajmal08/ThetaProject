@@ -46,24 +46,16 @@
                 <td> <a href="/Student/DownloadCV?Id=@s.Cv" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-down"></span> Download CV</a></td>
                 <td>@s.DOB</td>
                 <td>
-                    @try
-                    {
-                        @if (Context.Session.GetInt32("LIUID").Value == s.IsCreatedBy)
-                        {
+                   
                             <a href="/Student/DetailStudent?Id=@s.Id" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-ok"></span> Detail</a>
                             @*<a href="/Student/DeleteStudent?Id=@s.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span> Delete</a>*@
                             <a href="#" data-studentid="@s.Id" class="btn btn-danger DeleteStudent "><span class="glyphicon glyphicon-remove"></span> Delete</a>
                             <a href="/Student/EditStudent?Id=@s.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        <h1 class="alert alert-success">There is something problem... </h1>
-                    }
+                     
                 </td>
             </tr>
         }
-        /**/
+      
     </tbody>
 
 </table>

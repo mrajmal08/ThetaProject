@@ -45,14 +45,14 @@ namespace ThetaProject.Controllers
             FS.Close();
             S.Cv = "/WebData/CVs/" + CVName + CVExtension;
 
-                S.IsCreatedBy = HttpContext.Session.GetInt32("LIUID").Value;
+                S.CreatedBy = HttpContext.Session.GetString("LIUID");
                 ORM.Student.Add(S);
                 ORM.SaveChanges();
 
-            String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923338311685&password=2915&sender=BrandName&mobile="+S.Contact+"@message=WelCome to Our team";
-            var APIClient = new HttpClient();
-            var RM = APIClient.GetAsync(ApiUrl);
-            var FR = RM.Result.Content.ReadAsStringAsync();
+            //String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923338311685&password=2915&sender=BrandName&mobile="+S.Contact+"@message=WelCome to Our team";
+            //var APIClient = new HttpClient();
+            //var RM = APIClient.GetAsync(ApiUrl);
+            //var FR = RM.Result.Content.ReadAsStringAsync();
 
 
 
@@ -103,10 +103,10 @@ namespace ThetaProject.Controllers
         [HttpPost]
         public IActionResult AllStudents(String SearchByName , String SearchByDept , String SearchByAddress)
         {
-            if (HttpContext.Session.GetInt32("LIUID") == null){
+           
 
-                return RedirectToAction("Login");
-            }
+                
+            
 
             IList<Student> SS = ORM.Student.Where(m => m.Name.Contains(SearchByName) || m.Dept.Contains(SearchByDept) || m.Address.Contains(SearchByAddress)).ToList<Student>();
             return View(SS);
@@ -231,7 +231,7 @@ namespace ThetaProject.Controllers
                 ViewBag.Message = "Invalid User Name or Password";
                 return View();
             }
-            HttpContext.Session.SetInt32("LIUID", LU.Id);
+            HttpContext.Session.SetString("LIUID", LU.Id.ToString());
             return RedirectToAction("AllStudents");
 
         }
