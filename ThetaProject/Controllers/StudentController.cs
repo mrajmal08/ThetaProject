@@ -103,12 +103,14 @@ namespace ThetaProject.Controllers
         [HttpPost]
         public IActionResult AllStudents(String SearchByName , String SearchByDept , String SearchByAddress)
         {
-           
-
-                
-            
+            if (HttpContext.Session.GetString("LIUID") == null)
+            {
+                return RedirectToAction("Login");
+            }
 
             IList<Student> SS = ORM.Student.Where(m => m.Name.Contains(SearchByName) || m.Dept.Contains(SearchByDept) || m.Address.Contains(SearchByAddress)).ToList<Student>();
+
+        
             return View(SS);
         }
         public IActionResult DetailStudent(int Id)
@@ -244,16 +246,22 @@ namespace ThetaProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SignUp(LoginUser U)
         {
-            try
+
+
+            bool isExist = ORM.LoginUser.Where(u => u.Email.ToLowerInvariant().Equals(U.Email.ToLower())) != null;
+            if (!isExist)
             {
+
                 ORM.LoginUser.Add(U);
                 ORM.SaveChanges();
                 ViewBag.Message = "Registration Done";
-
+                return View("AllStudents");
             }
-            catch (Exception ex)
+            else
             {
-                ViewBag.Message = "Sorry; please enter the right details";
+
+
+                ViewBag.Message = "Sorry; User is already exist";
             }
 
             return View();
