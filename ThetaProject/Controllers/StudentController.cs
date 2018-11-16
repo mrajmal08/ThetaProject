@@ -246,25 +246,27 @@ namespace ThetaProject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SignUp(LoginUser U)
         {
-
-
-            bool isExist = ORM.LoginUser.Where(u => u.Email.ToLowerInvariant().Equals(U.Email.ToLower())) != null;
-            if (!isExist)
+            var userWithSameEmail = ORM.LoginUser.Where(m => m.Email == U.Email).SingleOrDefault(); //checking if the emailid already exits for any user
+            if (ModelState.IsValid)
             {
-
-                ORM.LoginUser.Add(U);
-                ORM.SaveChanges();
-                ViewBag.Message = "Registration Done";
-                return View("AllStudents");
+                if (userWithSameEmail == null)
+                {
+                    ORM.LoginUser.Add(U);
+                    ORM.SaveChanges();
+                    ViewBag.Message = "Registration Done";
+                    return RedirectToAction("AllStudents");
+                }
+                else
+                {
+                    ViewBag.Message = "User with this Email Already Exist";
+                    return View("SignUp");
+                }
             }
+
             else
             {
-
-
-                ViewBag.Message = "Sorry; User is already exist";
+                return View("AllStudents");
             }
-
-            return View();
         }
         public IActionResult LogOut()
         {
