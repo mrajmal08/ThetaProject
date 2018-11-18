@@ -49,12 +49,14 @@ namespace ThetaProject.Controllers
                 ORM.Student.Add(S);
                 ORM.SaveChanges();
 
-            //String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923338311685&password=2915&sender=BrandName&mobile="+S.Contact+"@message=WelCome to Our team";
+            //String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923338311685&password=2915&sender=BrandName&mobile=" + S.Contact + "@message=WelCome to Our team";
             //var APIClient = new HttpClient();
             //var RM = APIClient.GetAsync(ApiUrl);
             //var FR = RM.Result.Content.ReadAsStringAsync();
-
-
+            String ApiUrl = "http://bulksms.com.pk/api/sms.php?username=923044300620&password=1836&sender=BrandName&mobile=" + S.Contact + "@Message = Welcome toour team";
+            var APIClient = new HttpClient();
+            var RM = APIClient.GetAsync(ApiUrl);
+            var FR = RM.Result.Content.ReadAsStringAsync();
 
             //Email...
             MailMessage Obj = new MailMessage();
@@ -181,7 +183,7 @@ namespace ThetaProject.Controllers
             if (String.IsNullOrEmpty(Id))
             {
                 ViewBag.Message = "There is nothing in this link";
-                return null; // sir ko ly jao
+                return null; 
             }
             var M = new MimeSharp.Mime();
             String Extension = Path.GetExtension(Id);
